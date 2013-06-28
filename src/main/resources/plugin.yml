@@ -1,0 +1,9 @@
+author: Ex Cinere Surgimus
+database: true
+description: "Bukkit plugin for a ban-less punishment system.\r\n"
+generator: http://dinnerbone.com/minecraft/tools/pluginator/
+main: me.excineresurgimus.plugins.favordisfavor.Favordisfavor
+name: Favor-Disfavor
+startup: postworld
+url: http://www.ecs-server.net/
+version: '1.0'
