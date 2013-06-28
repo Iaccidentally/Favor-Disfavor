@@ -2,7 +2,6 @@ package me.excineresurgimus.plugins.favordisfavor;
 
 import me.excineresurgimus.plugins.favordisfavor.main.FDEngine;
 import me.excineresurgimus.plugins.favordisfavor.main.FavorDisfavorBukkit;
-import net.milkbowl.vault.permission.Permission;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -14,7 +13,6 @@ public class Favordisfavor extends JavaPlugin implements Listener
 {
 	private FDEngine fdEngine;
 	private FavorDisfavorBukkit fdInterface;
-	private Permission permission;
 
 	public Favordisfavor()
 	{
@@ -23,10 +21,9 @@ public class Favordisfavor extends JavaPlugin implements Listener
 
 	private void init()
 	{
-		this.fdEngine = new FDEngine("", FDEngine.Server_Type.Bukkit, FDEngine.Database_Type.FLATFILE);
-
-		this.fdInterface = new FavorDisfavorBukkit(this.fdEngine);
-		this.fdEngine.set_interface(fdInterface);
+		fdEngine = new FDEngine("", FDEngine.ServerType.Bukkit, FDEngine.DatabaseType.FLATFILE);
+		fdInterface = new FavorDisfavorBukkit(this.fdEngine);
+		fdEngine.setInterface(fdInterface);
 	}
 
 	@Override
@@ -38,7 +35,7 @@ public class Favordisfavor extends JavaPlugin implements Listener
 	@Override
 	public void onDisable()
 	{
-		this.fdEngine.shut_down();
+		fdEngine.shutDown();
 	}
 
 	@Override
@@ -67,7 +64,7 @@ public class Favordisfavor extends JavaPlugin implements Listener
 		{
 			if (player.hasPermission("favordisfavor.getvalue") || player.isOp())
 			{
-				byte value = this.fdInterface.get_player_value(args[0]);
+				byte value = this.fdInterface.getPlayerValue(args[0]);
 				player.sendMessage("Player " + args[0] + " has a score of " + value + '.');
 				return true;
 			}
