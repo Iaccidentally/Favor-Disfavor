@@ -1,5 +1,5 @@
 author: Ex Cinere Surgimus
-database: true
+database: false
 description: "Bukkit plugin for a ban-less punishment system.\r\n"
 generator: http://dinnerbone.com/minecraft/tools/pluginator/
 main: me.excineresurgimus.plugins.favordisfavor.Favordisfavor
