@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 /**
  * Class Storing the data for FDMain usage.
+ *
  * @author JabJabJab
  *
  */
@@ -14,111 +15,112 @@ public class FlatFile implements IFDDataBase
 	/**
 	 * ArrayList to contain all players in a database.
 	 */
-	private ArrayList<FDPlayer> list_players;
-	
+	private ArrayList<FDPlayer> listPlayers;
 	/**
 	 * HashMap to contain all players in a map to access by name of the player.
 	 */
-	private HashMap<String, FDPlayer> map_players_by_name;
+	private HashMap<String, FDPlayer> mapPlayersByName;
 
 	/**
 	 * Main constructor.
 	 */
-	public FlatFile() 
+	public FlatFile()
 	{
 		//Declares the Variable(s).
-		this.list_players = new ArrayList<FDPlayer>();
-		map_players_by_name = new HashMap<String, FDPlayer>();
+		listPlayers = new ArrayList<FDPlayer>();
+		mapPlayersByName = new HashMap<String, FDPlayer>();
 	}
-	
-	public boolean add_player(FDPlayer fdPlayer) 
+
+	public boolean add_player(FDPlayer fdPlayer)
 	{
-		
-		if(list_players.contains(fdPlayer))
+
+		if (listPlayers.contains(fdPlayer))
 		{
 			System.err.println("FlatFile Database already contains this player!");
 			return false;
 		}
 		else
 		{
-			list_players.add(fdPlayer);
-			map_players_by_name.put(fdPlayer.get_name(), fdPlayer);
+			listPlayers.add(fdPlayer);
+			mapPlayersByName.put(fdPlayer.getName(), fdPlayer);
 			return true;
 		}
 	}
-	
+
 	/**
-	 * 
-	 * @param player_name
+	 *
+	 * @param playerName
 	 * @return
 	 */
-	public byte get_player_value(String player_name)
+	public byte getPlayerValue(String playerName)
 	{
-		FDPlayer player = map_players_by_name.get(player_name);
-		if(player == null)
+		FDPlayer player = mapPlayersByName.get(playerName);
+		if (player == null)
 		{
 			System.err.println("Player does not exist in the database! Returning 0.");
 			return 0;
 		}
 		else
 		{
-			return player.get_value();
+			return player.getValue();
 		}
 	}
-	
+
 	/**
 	 * Favorites the player selected. If the player does not exist, one is created for his or her place.
-	 * @param player_name
+	 *
+	 * @param playerName
 	 */
-	public boolean favorite(String player_name)
+	public boolean favorite(String playerName)
 	{
 		//Player object to have fun with.
-		FDPlayer player = get_player(player_name);
-	
+		FDPlayer player = getPlayer(playerName);
+
 		//Favorite the player.
 		return player.favorite();
 	}
-	
-	public boolean disfavorite(String player_name)
+
+	public boolean disfavorite(String playerName)
 	{
 		//Player object to have fun with.
-		FDPlayer player = get_player(player_name);
+		FDPlayer player = getPlayer(playerName);
 
 		//Disfavorite the player.
 		return player.disfavorite();
 	}
-	
-	public FDPlayer get_player(String player_name)
+
+	public FDPlayer getPlayer(String playerName)
 	{
-		
-		FDPlayer player = map_players_by_name.get(player_name);
-		
+
+		FDPlayer player = mapPlayersByName.get(playerName);
+
 		//Player does not exist yet. We need to create it.
-		if(player == null)
+		if (player == null)
 		{
-			System.out.println("Player Added to database: " + player_name);
-			player = new FDPlayer(player_name, (byte)0);
-			map_players_by_name.put(player_name, player);
-			list_players.add(player);
+			System.out.println("Player Added to database: " + playerName);
+			player = new FDPlayer(playerName, (byte)0);
+			mapPlayersByName.put(playerName, player);
+			listPlayers.add(player);
 		}
 		//then we return the player.
+		//really? I would have never guessed that return player returns player.
 		return player;
 	}
 
 	/**
 	 * Returns the list of players stored on this FlatFile instance.
+	 *
 	 * @return
 	 */
-	public ArrayList<FDPlayer> get_player_list() 
+	public ArrayList<FDPlayer> getPlayerList()
 	{
-		return this.list_players;
+		return listPlayers;
 	}
 
-	public boolean reset_player(String player_name) 
+	public boolean resetPlayer(String playerName)
 	{
-		FDPlayer player = map_players_by_name.get(player_name);
-		player.set_value((byte)0);
+		FDPlayer player = mapPlayersByName.get(playerName);
+		player.setValue((byte)0);
 		return false;
 	}
-	
 }

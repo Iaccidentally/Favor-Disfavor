@@ -1,35 +1,37 @@
 package me.excineresurgimus.plugins.favordisfavor.main;
 
+
 public class FavorDisfavorBukkit implements IFavorDisfavor
 {
 	private FDEngine fdEngine;
+
 	public FavorDisfavorBukkit(FDEngine fdEngine)
 	{
 		this.fdEngine = fdEngine;
 	}
-	
-	private FDEngine get_engine()
+
+	private FDEngine getEngine()
 	{
-		return this.fdEngine;
+		return fdEngine;
 	}
 
-	public boolean favor(String player_name) 
+	public boolean favor(String playerName)
 	{
-		return get_engine().Favorite(player_name);
+		return getEngine().Favorite(playerName);
 	}
 
-	public boolean disfavor(String player_name) 
+	public boolean disfavor(String playerName)
 	{
-		return get_engine().Disfavorite(player_name);
+		return getEngine().Disfavorite(playerName);
 	}
 
-	public boolean reset_player(String player_name) 
+	public boolean resetPlayer(String playerName)
 	{
-		return get_engine().reset_player(player_name);
+		return getEngine().resetPlayer(playerName);
 	}
 
-	public byte get_player_value(String player_name) 
+	public byte getPlayerValue(String playerName)
 	{
-		return get_engine().get_player_value(player_name);
+		return getEngine().getPlayerValue(playerName);
 	}
 }
