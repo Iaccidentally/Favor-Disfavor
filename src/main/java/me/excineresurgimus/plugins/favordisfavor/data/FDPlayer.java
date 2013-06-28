@@ -48,17 +48,16 @@ public class FDPlayer
 	/**
 	 * Returns the player's value.
 	 *
-	 * Rules go as such: value > 0 = favoritism; value < 0 = disfavoritism; 0 = You suck.
-	 *
-	 *
-	 *
-
+	 * Rules go as such:
+	 * value > 0 = favoritism;
+	 * value < 0 = disfavoritism;
+	 * 0 = You suck.
 	 *
 	 * @return
 	 */
 	public byte getValue()
 	{
-		return this.playerValue;
+		return playerValue;
 	}
 
 	/**
@@ -67,7 +66,7 @@ public class FDPlayer
 	public boolean favorite()
 	{
 		byte before = playerValue;
-		playerValue = playerValue > Byte.MIN_VALUE ? this.playerValue-- : this.playerValue;
+		playerValue = playerValue > Byte.MIN_VALUE ? playerValue-- : playerValue;
 		if (before == playerValue)
 		{
 			return false;

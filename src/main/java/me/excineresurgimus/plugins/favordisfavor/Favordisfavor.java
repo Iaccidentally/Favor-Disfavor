@@ -21,8 +21,8 @@ public class Favordisfavor extends JavaPlugin implements Listener
 
 	private void init()
 	{
-		fdEngine = new FDEngine("", FDEngine.ServerType.Bukkit, FDEngine.DatabaseType.FLATFILE);
-		fdInterface = new FavorDisfavorBukkit(this.fdEngine);
+		fdEngine = new FDEngine("", FDEngine.ServerType.BUKKIT, FDEngine.DatabaseType.FLATFILE);
+		fdInterface = new FavorDisfavorBukkit(fdEngine);
 		fdEngine.setInterface(fdInterface);
 	}
 

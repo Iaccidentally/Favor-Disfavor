@@ -1,9 +1,11 @@
 package me.excineresurgimus.plugins.favordisfavor.main;
 
 import java.io.IOException;
-import me.excineresurgimus.plugins.favordisfavor.data.*;
+import me.excineresurgimus.plugins.favordisfavor.data.FDFlatFileHelper;
+import me.excineresurgimus.plugins.favordisfavor.data.FlatFile;
+import me.excineresurgimus.plugins.favordisfavor.data.IFDDataBase;
 
-
+//This entire class is pointless. I just can't be fucked to fix it.
 public class FDEngine
 {
 	/**
@@ -19,19 +21,17 @@ public class FDEngine
 	 */
 	private IFDDataBase dataBase;
 
-
 	/**
 	 * Server Identification for Text cosmetics & reference.
 	 *
 	 * @author JabJabJab
 	 *
 	 */
-	public static enum ServerType
+	public enum ServerType
 	{
 		UNKNOWN,
-		Bukkit
+		BUKKIT
 	}
-
 
 	/**
 	 * Database Identification for storage types.
@@ -72,11 +72,11 @@ public class FDEngine
 	 */
 	private void initialize()
 	{
-		if (this.databaseType == DatabaseType.FLATFILE)
+		if (databaseType == DatabaseType.FLATFILE)
 		{
 			try
 			{
-				this.dataBase = FDFlatFileHelper.loadFlatfile();
+				dataBase = FDFlatFileHelper.loadFlatfile();
 			}
 			catch (IOException e)
 			{
@@ -106,9 +106,9 @@ public class FDEngine
 		try
 		{
 			boolean hasSaved = false;
-			if (this.databaseType == DatabaseType.FLATFILE)
+			if (databaseType == DatabaseType.FLATFILE)
 			{
-				hasSaved = FDFlatFileHelper.saveFlatFile((FlatFile)this.dataBase);
+				hasSaved = FDFlatFileHelper.saveFlatFile((FlatFile)dataBase);
 			}
 			if (!hasSaved)
 			{
@@ -189,12 +189,12 @@ public class FDEngine
 
 	/**
 	 * Returns a 'ServerType' Enumeration object representing the architecture the Server is using this system.
-	 *
+	 * also is completely pointless.
 	 * @return
 	 */
 	public ServerType getServerType()
 	{
-		return this.serverType;
+		return serverType;
 	}
 
 	/**
@@ -204,26 +204,26 @@ public class FDEngine
 	 */
 	public String getServerName()
 	{
-		return this.serverName;
+		return serverName;
 	}
 
 	public boolean Favorite(String playerName)
 	{
-		return this.dataBase.favorite(playerName);
+		return dataBase.favorite(playerName);
 	}
 
 	public boolean Disfavorite(String playerName)
 	{
-		return this.dataBase.disfavorite(playerName);
+		return dataBase.disfavorite(playerName);
 	}
 
 	public byte getPlayerValue(String playerName)
 	{
-		return this.dataBase.getPlayerValue(playerName);
+		return dataBase.getPlayerValue(playerName);
 	}
 
 	public boolean resetPlayer(String playerName)
 	{
-		return this.dataBase.resetPlayer(playerName);
+		return dataBase.resetPlayer(playerName);
 	}
 }

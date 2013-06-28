@@ -33,7 +33,7 @@ public class FDFlatFileHelper
 	 */
 	public static FlatFile loadFlatfile() throws IOException
 	{
-		//Our Returned object.
+		//Our returned object.
 		FlatFile flatFile = null;
 
 		//Our exists boolean for properly creating the database if it does not exist yet.
@@ -46,6 +46,7 @@ public class FDFlatFileHelper
 			flatFileExists = createFlatFile();
 		}
 		//If this boolean is false, Shit has gone terribly wrong and you should consider uninstalling windows.
+		//If you are running this on windows, you have bigger problems and should consider unistalling your brain.
 		if (!flatFileExists)
 		{
 			flatFile = new FlatFile();
@@ -63,15 +64,15 @@ public class FDFlatFileHelper
 				try
 				{
 					//Split the string by a comma.
-					String[] split_string = strLine.split(",");
+					String[] splitString = strLine.split(",");
 
 					//Sort the appropriate data values.
-					String player_name = split_string[0],
-							player_value = split_string[1];
+					String playerName = splitString[0],
+							playerValue = splitString[1];
 
 					//Adds the player to the list.
-					flatFile.add_player(
-							new FDPlayer(player_name, Byte.parseByte(player_value)));
+					flatFile.addPlayer(
+							new FDPlayer(playerName, Byte.parseByte(playerValue)));
 				}
 				catch (Exception e)
 				{
@@ -87,6 +88,7 @@ public class FDFlatFileHelper
 		}
 
 		//Then we return the flatfile instance.
+		//no shit sherlock
 		return flatFile;
 
 	}

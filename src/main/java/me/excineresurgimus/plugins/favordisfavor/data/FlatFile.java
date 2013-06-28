@@ -31,7 +31,7 @@ public class FlatFile implements IFDDataBase
 		mapPlayersByName = new HashMap<String, FDPlayer>();
 	}
 
-	public boolean add_player(FDPlayer fdPlayer)
+	public boolean addPlayer(FDPlayer fdPlayer)
 	{
 
 		if (listPlayers.contains(fdPlayer))

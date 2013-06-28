@@ -5,17 +5,17 @@ import java.util.ArrayList;
 
 public interface IFDDataBase
 {
-	public boolean add_player(FDPlayer fdPlayer);
+	public boolean addPlayer(FDPlayer fdPlayer);
 
-	public byte getPlayerValue(String player_name);
+	public byte getPlayerValue(String playerName);
 
-	public boolean favorite(String player_name);
+	public boolean favorite(String playerName);
 
-	public boolean disfavorite(String player_name);
+	public boolean disfavorite(String playerName);
 
-	public FDPlayer getPlayer(String player_name);
+	public FDPlayer getPlayer(String playerName);
 
 	public ArrayList<FDPlayer> getPlayerList();
 
-	public boolean resetPlayer(String player_name);
+	public boolean resetPlayer(String playerName);
 }
